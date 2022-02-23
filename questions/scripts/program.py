@@ -1,2 +1,1 @@
-def twoNumberSum(arr, tar):
-    return []
+# Write your code here

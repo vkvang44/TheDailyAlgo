@@ -15,11 +15,13 @@ def question(request):
     examples = ques.example_set.all()
     constraints = ques.constraint_set.all()
     testcases = ques.testcase_set.all()
-
+    print(examples)
     code = request.POST
     c = '# Write your code here'
     outputs = 'Click submit button to see if your code passes!'
     errors = ''
+    arr = []
+    e_arr = []
 
 
 
