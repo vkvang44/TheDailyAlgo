@@ -7,6 +7,7 @@ class Question(models.Model):
     number = models.IntegerField(null=True, blank=True)
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
+    code = RichTextField()
 
     def __str__(self):
         return self.title
@@ -37,3 +38,4 @@ class Testcase(models.Model):
 
     def __str__(self):
         return self.title
+
