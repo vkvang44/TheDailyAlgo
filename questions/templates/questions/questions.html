@@ -1,124 +1,80 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Editor</title>
-    <style type="text/css" media="screen">
-        #editor {
-            border: 1px solid lightgray;
-            margin: auto;
-            height: 500px;
-            width: 80%;
-        }
-        textarea {
-            border: 1px solid lightgray;
-            height: 750px;
-        }
-        .flex-container {
-          display: flex;
-          flex: wrap;
-        }
-        .flex-item-left {
-          background-color: #f1f1f1;
-          padding: 10px;
-          flex: 30%;
-        }
-
-        .flex-item-right {
-          padding: 10px;
-          flex: 70%;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>The Daily Algo</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
 </head>
+
 <body>
-<div class="flex-container">
-    <div class="flex-item-left">
-    <div>
-    <h1>Question</h1>
-        <p>{{question.title}}</p>
-        <p>{{question.description}}</p>
+    <div class="flex-container">
+        <div class="flex-item-left">
+            <div>
+                <h1>{{question.number}}. {{question.title}}</h1>
+                <p>{{question.description}}</p>
+            </div>
+            <div>
+                <h2>Example</h2>
+                {% for e in examples %}
+                {{e.input | safe}}
+                {{e.output| safe}}
+                {{e.explanation| safe}}
+                {% endfor %}
+
+            </div>
+            <div>
+                <h2>Constraints</h2>
+                {% for c in constraints %}
+                <p>{{c.text| safe}}</p>
+                {% endfor %}
+            </div>
+            <div>
+                <h2>Testcases</h2>
+                {% for t in testcases %}
+                {{t.test| safe}}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="flex-item-right">
+            <form action="" method="post">
+                {% csrf_token %}
+                <textarea name="my-python-editor" data-editor="python" rows="15">{{ user_code }}</textarea>
+
+                <div class="output">
+                    <div class="output-left">
+                        <h4>RESULTS</h4>
+                        <hr>
+                        {% for t in test_output %}
+                            {% for word in t %}
+                            <pre>{{word}}</pre>
+                            {% endfor %}
+                        - - - - - - - - - - - - - - - - - -
+                        {% endfor %}
+                    </div>
+
+                    <div class="output-right">
+                        <h4>STDOUT</h4>
+                        <hr>
+                        {% for s in std_output %}
+                        <pre>{{ s }}</pre>
+                        {% endfor %}
+                        <pre>{{errors}}</pre>
+
+                        
+                    </div>
+                </div>
+                <input type="submit" />
+            </form> 
+        </div>
     </div>
-    <div>
-    <h1>Example</h1>
-        {% for e in examples %}
-        {{e.input | safe}}
-        {{e.output| safe}}
-        {{e.explanation| safe}}
-        {% endfor %}
 
-    </div>
-    <div>
-    <h1>Constraints</h1>
-        {% for c in constraints %}
-        {{c.text| safe}}
-        {% endfor %}
-    </div>
-    <div>
-    <h1>Testcases</h1>
-        {% for t in testcases %}
-        {{t.test| safe}}
-        {% endfor %}
-    </div>
-</div>
-<div class="flex-item-right">
-     <form action="" method="post">
-        {% csrf_token %}
-        <textarea name="my-python-editor" data-editor="python" rows="15" >{{ c }}</textarea>
-         <input type="submit"/>
-     </form>
-     <div>
-         {% for o in outputs %}
-            {{ o.decode | safe }}
-         <br>
-         {% endfor %}
-     </div>
-      <div>
-         {% for e in errors %}
-            {{ e.decode | safe }}
-         <br>
-         {% endfor %}
-     </div>
-</div>
-</div>
-
-<script src="{% static 'src-noconflict/ace.js' %}" type="text/javascript" charset="utf-8"></script>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    $(function () {
-        $('textarea[data-editor]').each(function () {
-            var textarea = $(this);
-
-            var mode = textarea.data('editor');
-
-            var editDiv = $('<div>', {
-
-                height: textarea.height(),
-                'class': textarea.attr('class')
-            }).insertBefore(textarea);
-
-            textarea.css('display', 'none');
-            textarea.css('visibility', 'hidden');
-
-
-            var editor = ace.edit(editDiv[0]);
-            editor.renderer.setShowGutter(true);
-            editor.getSession().setValue(textarea.val());
-            editor.getSession().setMode("ace/mode/" + mode);
-            editor.setTheme("ace/theme/idle_fingers");
-            editor.setOptions({
-              fontSize: "12pt"
-            });
-
-            // copy back to textarea on form submit...
-            textarea.closest('form').submit(function () {
-                textarea.val(editor.getSession().getValue());
-            })
-
-        });
-    });
-</script>
+    <script src="{% static 'src-noconflict/ace.js' %}" type="text/javascript" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'main.js'%}"></script>
 
 </body>
+
 </html>

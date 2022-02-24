@@ -27,8 +27,12 @@ dict_cases = {
 
 
 def test_program(case):
-    print(case["ques"])
+    print("STDOUT:")
     output = program.twoNumberSum(case["array"], case["targetSum"])
+
+    print('')
+    print('RESULT:')
+    print(case["ques"])
     if case["ans_1"] in output and case["ans_2"] in output:
         print("PASS!\n")
     else:
