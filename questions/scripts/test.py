@@ -24,8 +24,6 @@ dict_cases = {
     },
 }
 
-
-
 def test_program(case):
     print("STDOUT:")
     output = program.twoNumberSum(case["array"], case["targetSum"])

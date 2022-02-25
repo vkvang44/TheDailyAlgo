@@ -75,8 +75,6 @@ def question(request):
             outs, errs = proc.communicate()
             errors = "output limit exceeded. Check for memory leaks or inifite loops"
 
-
-
     context = {
         'question': ques,
         'examples': examples,
@@ -91,3 +89,5 @@ def question(request):
     }
 
     return render(request, 'questions/questions.html', context)
+
+

@@ -12,61 +12,74 @@
 <body>
     <div class="flex-container">
         <div class="flex-item-left">
-            <div>
+            <div class="text-containers">
                 <h1>{{question.number}}. {{question.title}}</h1>
+                <hr>
                 <p>{{question.description}}</p>
             </div>
-            <div>
+            <div class="text-containers">
                 <h2>Example</h2>
+                <hr>
+                
                 {% for e in examples %}
                 {{e.input | safe}}
                 {{e.output| safe}}
                 {{e.explanation| safe}}
                 {% endfor %}
-
-            </div>
-            <div>
+                
+                
+            </div class="text-containers">
+            <div class="text-containers">
                 <h2>Constraints</h2>
+                <hr>
+                <ul>
                 {% for c in constraints %}
-                <p>{{c.text| safe}}</p>
+                <li>{{c.text| safe}}</li>
                 {% endfor %}
+                </ul>
             </div>
-            <div>
+            <div class="text-containers">
                 <h2>Testcases</h2>
+                <hr>
+                
                 {% for t in testcases %}
-                {{t.test| safe}}
+                {{t.test | safe}}
                 {% endfor %}
+               
+                
             </div>
         </div>
         <div class="flex-item-right">
             <form action="" method="post">
                 {% csrf_token %}
                 <textarea name="my-python-editor" data-editor="python" rows="15">{{ user_code }}</textarea>
-
                 <div class="output">
                     <div class="output-left">
+                        <h4>STDOUT</h4>
+                        <hr>
+                        <div class="output-content">
+                            {% for s in std_output %}
+                            <pre>{{ s }}</pre>
+                            {% endfor %}
+                            <pre>{{errors}}</pre>
+                        </div>
+                        
+                    </div>
+                    <div class="output-right">
                         <h4>RESULTS</h4>
                         <hr>
-                        {% for t in test_output %}
+                        <div class="output-content">
+                            {% for t in test_output %}
                             {% for word in t %}
                             <pre>{{word}}</pre>
                             {% endfor %}
                         - - - - - - - - - - - - - - - - - -
                         {% endfor %}
-                    </div>
+                        </div>
 
-                    <div class="output-right">
-                        <h4>STDOUT</h4>
-                        <hr>
-                        {% for s in std_output %}
-                        <pre>{{ s }}</pre>
-                        {% endfor %}
-                        <pre>{{errors}}</pre>
-
-                        
                     </div>
                 </div>
-                <input type="submit" />
+                <input type="submit" class=" btn btn-hover" value="Run Code">
             </form> 
         </div>
     </div>
