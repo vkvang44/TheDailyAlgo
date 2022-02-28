@@ -7,6 +7,7 @@ class Question(models.Model):
     number = models.IntegerField(null=True, blank=True)
     title = models.CharField(max_length=200)
     description = RichTextField()
+    method = models.TextField()
 
     def __str__(self):
         return self.title

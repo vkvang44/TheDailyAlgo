@@ -15,8 +15,7 @@ def question(request):
     examples = ques.example_set.all()
     constraints = ques.constraint_set.all()
     testcases = ques.testcase_set.all()
-
-    user_code = '# Write your code here'
+    user_code = ques.method
     errors = ''
     std_output = ['Click \'Run Code\' to see if your code passes the testcases!']
     test_output = []
