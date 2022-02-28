@@ -6,8 +6,7 @@ from ckeditor.fields import RichTextField
 class Question(models.Model):
     number = models.IntegerField(null=True, blank=True)
     title = models.CharField(max_length=200)
-    description = models.TextField(null=True, blank=True)
-    code = RichTextField()
+    description = RichTextField()
 
     def __str__(self):
         return self.title

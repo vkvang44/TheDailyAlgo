@@ -22,6 +22,20 @@ dict_cases = {
         "ans_1": 11,
         "ans_2": 3
     },
+    4: {
+        "ques": "Case 4",
+        "array": [3, -11, 1, -1, 6, -25],
+        "targetSum": -36,
+        "ans_1": -11,
+        "ans_2": -25
+    },
+    5: {
+        "ques": "Case 5",
+        "array": [11, 24, 65, 88, 64, 78, 678, 11, 23, 21],
+        "targetSum": 109,
+        "ans_1": 88,
+        "ans_2": 21
+    }
 }
 
 def test_program(case):

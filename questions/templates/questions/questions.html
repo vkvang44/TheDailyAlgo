@@ -15,7 +15,7 @@
             <div class="text-containers">
                 <h1>{{question.number}}. {{question.title}}</h1>
                 <hr>
-                <p>{{question.description}}</p>
+                {{question.description| safe}}
             </div>
             <div class="text-containers">
                 <h2>Example</h2>
