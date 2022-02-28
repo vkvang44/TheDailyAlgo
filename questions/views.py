@@ -15,16 +15,11 @@ def question(request):
     examples = ques.example_set.all()
     constraints = ques.constraint_set.all()
     testcases = ques.testcase_set.all()
-    print(examples)
-    code = request.POST
+
     user_code = '# Write your code here'
-    outputs = 'Click submit button to see if your code passes!'
     errors = ''
-    std_output = []
+    std_output = ['Click \'Run Code\' to see if your code passes the testcases!']
     test_output = []
-    temp = []
-
-
 
     if request.method == 'POST':
         code = request.POST
@@ -45,18 +40,20 @@ def question(request):
 
             # get stdout
             s = False
+            std_output = []
             for word in arr:
                 if word == "STDOUT:":
                     s = True
                     continue
                 elif word == "RESULT:":
                     s = False
-                    break
+
                 if s == True:
                     std_output.append(word)
 
             # get test output
             t = False
+            temp = []
             for word in arr:
                 if word == "RESULT:":
                     t = True
@@ -71,18 +68,17 @@ def question(request):
             test_output.append(temp)
 
         except subprocess.TimeoutExpired:
+            std_output = []
             proc.kill()
             outs, errs = proc.communicate()
-            errors = "output limit exceeded. Check for memory leaks or inifite loops"
+            errors = "output limit exceeded. Check for memory leaks or infinite loops"
 
     context = {
         'question': ques,
         'examples': examples,
         'constraints': constraints,
         'testcases': testcases,
-        "code": code,
         "user_code": user_code,
-        'outputs': outputs,
         'std_output': std_output,
         'test_output': test_output,
         'errors': errors

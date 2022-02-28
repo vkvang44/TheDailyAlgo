@@ -28,13 +28,13 @@ def test_program(case):
     print("STDOUT:")
     output = program.twoNumberSum(case["array"], case["targetSum"])
 
-    print('')
     print('RESULT:')
     print(case["ques"])
-    if case["ans_1"] in output and case["ans_2"] in output:
+    if case["ans_1"] in output and case["ans_2"] in output and len(output) == 2:
         print("PASS!\n")
     else:
         print("FAIL :(")
+        print("Input: ", case["array"], ",", case["targetSum"])
         print("Your Answer: ", output)
         print("Correct Answer: ", [case["ans_1"], case["ans_2"]], "\n")
 

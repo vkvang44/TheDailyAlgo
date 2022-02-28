@@ -26,7 +26,10 @@ $(function () {
         textarea.closest('form').submit(function () {
             textarea.val(editor.getSession().getValue());
         })
-
+    });
+    $("#submit-btn").click(function(){
+        $(this).addClass("loading");
+        $(this).val('');
     });
 });
 

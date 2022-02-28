@@ -1,4 +1,5 @@
 # Write your code here
-def twoNumberSum(a, r ):
-
-    return []
+def twoNumberSum(asd,a):
+    while len(asd):
+        print('')
+    
