@@ -1,8 +1,11 @@
 def twoNumberSum(arr, target):
-    a = [1,2]
-    b = [2,1]
-    if 1 in a:
-        print('r')
-    if 1 in b:
-        print('a')
-    return []
+    # write your code here
+    seen = {}
+    for num in arr:
+        asda
+        diff = target - num
+        if diff in seen:
+            print([seen[diff], num])
+            return [seen[diff], num]
+        else:
+            seen[num] = num

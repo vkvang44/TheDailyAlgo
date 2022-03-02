@@ -32,7 +32,7 @@ def question(request):
 
         proc = subprocess.Popen(['python', 'test.py'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=test_path)
         try:
-            outs, errs = proc.communicate(timeout=10)
+            outs, errs = proc.communicate(timeout=5)
             outputs = outs.decode()
             errors = errs.decode()
             arr = outputs.split('\r\n')
@@ -40,15 +40,19 @@ def question(request):
             # get stdout
             s = False
             std_output = []
+            temp = []
+            print(arr)
             for word in arr:
                 if word == "STDOUT:":
                     s = True
                     continue
                 elif word == "RESULT:":
                     s = False
-
+                    std_output.append(temp)
+                    temp = []
                 if s == True:
-                    std_output.append(word)
+                    temp.append(word)
+            print(std_output)
 
             # get test output
             t = False
@@ -70,7 +74,7 @@ def question(request):
             std_output = []
             proc.kill()
             outs, errs = proc.communicate()
-            errors = "output limit exceeded. Check for memory leaks or infinite loops"
+            errors = "Output limit exceeded. Check for memory leaks or infinite loops"
 
     context = {
         'question': ques,
