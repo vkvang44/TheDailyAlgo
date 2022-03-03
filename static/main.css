@@ -16,7 +16,7 @@ textarea {
   padding: 10px;
   flex: 20%;
   overflow: auto;
-  margin: 8px;
+  margin: 8px 8px 8px 18px;
 }
 
 .flex-item-right {

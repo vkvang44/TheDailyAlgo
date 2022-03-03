@@ -13,7 +13,7 @@
     <div class="flex-container">
         <div class="flex-item-left">
             <div class="text-containers">
-                <h1>{{question.number}}. {{question.title}}</h1>
+                <h1><a href="{{question.link}}" target="_blank" style="color: blue;">{{question.number}}. {{question.title}}</a></h1>
                 <hr>
                 {{question.description| safe}}
             </div>
@@ -78,7 +78,7 @@
                     <input type="submit" id="submit-btn" class="btn-detail " value="Run Code">
                 </div>
                 <div class="reset-btn btn-hover" >
-                    <a href="{%url 'question'%}" style="color: black; text-decoration: none;">Reset Code</a>
+                    <a href="{%url 'question'%}" style="color: black; text-decoration: none; text-align: center; ">Reset Code</a>
                     <!--<input type="submit" id="reset-btn" class="btn-detail " value="Reset Code">-->
                 </div>
             </form> 
@@ -88,5 +88,4 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{% static 'main.js'%}"></script>
 </body>
-
 </html>
