@@ -17,7 +17,7 @@ def question(request):
     testcases = ques.testcase_set.all()
     user_code = ques.method
     errors = ''
-    std_output = ['Click \'Run Code\' to see if your code passes the testcases!']
+    std_output = [['Click \'Run Code\' to see if your code passes the testcases!']]
     test_output = []
 
     if request.method == 'POST':
