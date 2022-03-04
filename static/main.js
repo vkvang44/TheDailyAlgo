@@ -5,7 +5,6 @@ $(function () {
         var mode = textarea.data('editor');
 
         var editDiv = $('<div>', {
-            height: textarea.height(),
             'class': textarea.attr('class')
         }).insertBefore(textarea);
 
@@ -19,7 +18,8 @@ $(function () {
         editor.getSession().setMode("ace/mode/" + mode);
         editor.setTheme("ace/theme/dreamweaver");
         editor.setOptions({
-          fontSize: "12pt"
+          fontSize: "12pt",
+          fontFamily: "Monospace"
         });
 
         // copy back to textarea on form submit...

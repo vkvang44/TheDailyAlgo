@@ -35,14 +35,14 @@ def question(request):
             outs, errs = proc.communicate(timeout=5)
             outputs = outs.decode()
             errors = errs.decode()
-            arr = outputs.split('\r\n')
+            outputs_arr = outputs.split('\r\n')
+
 
             # get stdout
             s = False
             std_output = []
             temp = []
-            print(arr)
-            for word in arr:
+            for word in outputs_arr:
                 if word == "STDOUT:":
                     s = True
                     continue
@@ -52,12 +52,12 @@ def question(request):
                     temp = []
                 if s == True:
                     temp.append(word)
-            print(std_output)
+
 
             # get test output
             t = False
             temp = []
-            for word in arr:
+            for word in outputs_arr:
                 if word == "RESULT:":
                     t = True
                     continue
@@ -69,6 +69,7 @@ def question(request):
                 if t == True:
                     temp.append(word)
             test_output.append(temp)
+            print(test_output)
 
         except subprocess.TimeoutExpired:
             std_output = []

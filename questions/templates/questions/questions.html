@@ -52,28 +52,32 @@
                 <textarea name="my-python-editor" data-editor="python" rows="15">{{ user_code }}</textarea>
                 <div class="output">
                     <div class="output-left">
-                        <h4>RESULTS</h4>
-                        <hr>
-                        <div class="output-content">
+                        <h3>RESULTS</h4>
+                        <div class="output-content">  
                             {% for t in test_output %}
+                            <div class="testcases">
                                 {% for t_output in t %}
                                 <pre>{{t_output}}</pre>
                                 {% endfor %}
-                            <hr>
+                            </div>
                             {% endfor %}
                         </div>
                     </div>
                     <div class="output-right">
-                        <h4>STDOUT</h4>
-                        <hr>
+                        <h3>STDOUT</h4>
                         <div class="output-content">
                             {% for s in std_output %}
+                            <div class="testcases">
                                 {% for s_output in s %}
                                 <pre>{{ s_output }}</pre>
                                 {% endfor %}
-                            <hr>
+                            </div>
                             {% endfor %}
-                            <pre>{{errors}}</pre>
+                            {% if errors != '' %}
+                            <div class="testcases">
+                                <pre>{{errors}}</pre>
+                            </div>
+                            {% endif %}    
                         </div>
                     </div>
                 </div>
