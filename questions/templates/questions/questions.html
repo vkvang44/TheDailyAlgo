@@ -13,7 +13,10 @@
     <div class="flex-container">
         <div class="flex-item-left">
             <div class="text-containers">
-                <h1><a href="{{question.link}}" target="_blank" style="color: blue;">{{question.number}}. {{question.title}}</a></h1>
+                <div class="question-header">
+                    <h1><a href="{{question.link}}" target="_blank" style="color: blue; text-decoration: none;">{{question.number}}. {{question.title}}</a></h1>
+                    <span>&#128279;</span>
+                </div>
                 <hr>
                 {{question.description| safe}}
             </div>

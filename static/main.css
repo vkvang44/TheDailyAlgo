@@ -1,33 +1,50 @@
+body{
+  height: 100vh;
+  width: 100vw;
+  margin: 0px;
+}
+::-webkit-scrollbar {
+  width: 7px;               /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: white;        /* color of the tracking area */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: lightgray;    /* color of the scroll thumb */
+  border-radius: 10px;       /* roundness of the scroll thumb */  /* creates padding around scroll thumb */
+}
+
 textarea {
   height: 65vh;
 }
 
 .ace_editor.ace-dreamweaver {
   border: 1px solid lightgray;
+  border-radius: 5px;
 }
+
 
 .flex-container {
   display: flex;
   height: 100%;
+  background-color: #f6f9fc;
 }
 
 .flex-item-left {
-  background-color: #f1f1f1;
+  border: 1px solid lightgray;
+  border-radius: 5px;
   padding: 10px;
   flex: 20%;
   overflow: auto;
-  margin: 8px 8px 8px 18px;
+  margin: 15px 5px 15px 15px;
+  background-color: white;
 }
 
 .flex-item-right {
   flex: 80%;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin:8px;
-}
-
-.ace-editor {
-  border: 1px solid #f1f1f1;
+  margin:15px 15px 15px 5px;
 }
 
 .output {
@@ -37,37 +54,35 @@ textarea {
 
 .output-left {
   border: 1px solid lightgray;
+  border-radius: 5px;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-right: 10px;
   padding: 10px;
   flex: 50%;
+  background-color: white;
 }
 
 .output-right {
   border: 1px solid lightgray;
+  border-radius: 5px;
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 10px;
   flex: 50%;
+  background-color: white;
 }
 
 .output-content {
-  height: 20vh;
+  height: 21vh;
   overflow: auto;
 }
 
-body{
-  height: 100vh;
-  width: 100vw;
-  margin: 0px;
-}
 
 .text-containers {
   margin-left:5px;
   margin-right:5px;
   padding: 10px;
-
 }
 
 .body-containers {
@@ -79,7 +94,7 @@ body{
   background-color: black;
   border: none;
   color: white;
-  padding: 10px;
+  padding: 5px;
   text-align: center;
   text-decoration: none;
   font-size: 16px;
@@ -87,8 +102,9 @@ body{
   -webkit-transition-duration: 0.4s; 
   transition-duration: 0.4s;
   width: 100px;
-  height: 25px;
+  height: 20px;
   margin-left:5px;
+  border-radius: 5px;
 }
 
 .reset-btn {
@@ -96,7 +112,7 @@ body{
   background-color: white; 
   border: 1px solid lightgray;
   color: white;
-  padding: 10px;
+  padding: 5px;
   text-align: center;
   text-decoration: none;
   font-size: 16px;
@@ -104,8 +120,9 @@ body{
   -webkit-transition-duration: 0.4s; 
   transition-duration: 0.4s;
   width: 100px;
-  height: 25px;
+  height: 20px;
   margin-right:5px;
+  border-radius: 5px;
 }
 
 .btn-detail{
@@ -134,4 +151,12 @@ body{
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.question-header h1 {
+  display: inline;
+}
+
+.question-header span {
+  font-size: small;
 }
