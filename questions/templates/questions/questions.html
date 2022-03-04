@@ -56,11 +56,11 @@
                         <hr>
                         <div class="output-content">
                             {% for t in test_output %}
-                            {% for t_output in t %}
-                            <pre>{{t_output}}</pre>
+                                {% for t_output in t %}
+                                <pre>{{t_output}}</pre>
+                                {% endfor %}
+                            <hr>
                             {% endfor %}
-                        - - - - - - - - - - - - - - - - - -
-                        {% endfor %}
                         </div>
                     </div>
                     <div class="output-right">
@@ -68,16 +68,16 @@
                         <hr>
                         <div class="output-content">
                             {% for s in std_output %}
-                            {% for s_output in s %}
-                            <pre>{{ s_output }}</pre>
-                            {% endfor %}
-                            - - - - - - - - - - - - - - - - - -
+                                {% for s_output in s %}
+                                <pre>{{ s_output }}</pre>
+                                {% endfor %}
+                            <hr>
                             {% endfor %}
                             <pre>{{errors}}</pre>
                         </div>
                     </div>
                 </div>
-                <div class="btn btn-hover">
+                <div class="btn btn-hover ">
                     <input type="submit" id="submit-btn" class="btn-detail " value="Run Code">
                 </div>
                 <div class="reset-btn btn-hover" >
