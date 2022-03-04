@@ -3,6 +3,7 @@ from .models import Question
 from django.core.files import File
 import os
 import subprocess
+import random
 
 module_dir = os.path.dirname(__file__)
 test_path = os.path.join(module_dir, 'scripts\\')
@@ -11,11 +12,14 @@ file_path = os.path.join(module_dir, 'scripts\\program.py')
 
 # Create your views here.
 def question(request):
-    ques = Question.objects.get(number=1)
+    ques = Question.objects.get(number=2)
     examples = ques.example_set.all()
     constraints = ques.constraint_set.all()
     testcases = ques.testcase_set.all()
+    test_file = str(testcases[0]) + '.py'
+
     user_code = ques.method
+
     errors = ''
     std_output = [['Click \'Run Code\' to see if your code passes the testcases!']]
     test_output = []
@@ -30,13 +34,12 @@ def question(request):
         myfile.closed
         f.closed
 
-        proc = subprocess.Popen(['python', 'test.py'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=test_path)
+        proc = subprocess.Popen(['python', test_file], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=test_path)
         try:
             outs, errs = proc.communicate(timeout=5)
             outputs = outs.decode()
             errors = errs.decode()
             outputs_arr = outputs.split('\r\n')
-
 
             # get stdout
             s = False
@@ -53,7 +56,6 @@ def question(request):
                 if s == True:
                     temp.append(word)
 
-
             # get test output
             t = False
             temp = []
@@ -69,7 +71,6 @@ def question(request):
                 if t == True:
                     temp.append(word)
             test_output.append(temp)
-            print(test_output)
 
         except subprocess.TimeoutExpired:
             std_output = []
