@@ -4,7 +4,6 @@ def containsDuplicate(nums):
     for num in nums:
         print(num)
         if num in num_set:
-            
-            return True
+            return False
         num_set.add(num)
     return False

@@ -9,7 +9,7 @@ dict_cases = {
     2: {
         "ques": "Case 2",
         "nums": [1,2,3,4],
-        "ans": False,
+        "ans": False
     },
     3: {
         "ques": "Case 3",
@@ -35,7 +35,7 @@ def test_program(case):
 
     print('RESULT:')
     print(case["ques"])
-    if output == case['ans']:
+    if type(output) == type(case['ans']) and output == case['ans']:
         print("PASS!\n")
     else:
         print("FAIL :(")

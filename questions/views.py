@@ -3,7 +3,6 @@ from .models import Question
 from django.core.files import File
 import os
 import subprocess
-import random
 
 module_dir = os.path.dirname(__file__)
 test_path = os.path.join(module_dir, 'scripts\\')
@@ -17,9 +16,7 @@ def question(request):
     constraints = ques.constraint_set.all()
     testcases = ques.testcase_set.all()
     test_file = str(testcases[0]) + '.py'
-
     user_code = ques.method
-
     errors = ''
     std_output = [['Click \'Run Code\' to see if your code passes the testcases!']]
     test_output = []
