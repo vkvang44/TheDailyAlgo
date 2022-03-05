@@ -1,8 +1,10 @@
 from django.shortcuts import render
-from .models import Question
+from .models import Question, Date
 from django.core.files import File
 import os
 import subprocess
+from datetime import date
+from random import randint
 
 module_dir = os.path.dirname(__file__)
 test_path = os.path.join(module_dir, 'scripts\\')
@@ -11,7 +13,17 @@ file_path = os.path.join(module_dir, 'scripts\\program.py')
 
 # Create your views here.
 def question(request):
-    ques = Question.objects.get(number=2)
+    saved_date = Date.objects.get(date_id=1)
+    num = saved_date.last_num
+    curr_date = date.today()
+
+    if curr_date != saved_date.datetime:
+        num = randint(1,2)
+        saved_date.datetime = curr_date
+        saved_date.last_num = num
+        saved_date.save()
+
+    ques = Question.objects.get(number=num)
     examples = ques.example_set.all()
     constraints = ques.constraint_set.all()
     testcases = ques.testcase_set.all()
@@ -22,8 +34,8 @@ def question(request):
     test_output = []
 
     if request.method == 'POST':
-        code = request.POST
-        user_code = code['my-python-editor']
+        req_post = request.POST
+        user_code = req_post['my-python-editor']
 
         with open(file_path, 'w') as f:
             myfile = File(f)
