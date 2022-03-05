@@ -40,6 +40,7 @@ class Testcase(models.Model):
     def __str__(self):
         return self.title
 
+
 class Date(models.Model):
     date_id = models.IntegerField()
     last_num = models.IntegerField()

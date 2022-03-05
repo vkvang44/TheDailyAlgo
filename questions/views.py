@@ -1,14 +1,7 @@
 from django.shortcuts import render
 from .models import Question, Date
-from django.core.files import File
-import os
-import subprocess
 from datetime import date
-from random import randint
-
-module_dir = os.path.dirname(__file__)
-test_path = os.path.join(module_dir, 'scripts\\')
-file_path = os.path.join(module_dir, 'scripts\\program.py')
+from .utils import create_file, execute_file, change_date
 
 
 # Create your views here.
@@ -18,10 +11,7 @@ def question(request):
     curr_date = date.today()
 
     if curr_date != saved_date.datetime:
-        num = randint(1,2)
-        saved_date.datetime = curr_date
-        saved_date.last_num = num
-        saved_date.save()
+        num = change_date(saved_date, curr_date)
 
     ques = Question.objects.get(number=num)
     examples = ques.example_set.all()
@@ -37,55 +27,8 @@ def question(request):
         req_post = request.POST
         user_code = req_post['my-python-editor']
 
-        with open(file_path, 'w') as f:
-            myfile = File(f)
-            myfile.write(user_code)
-        myfile.closed
-        f.closed
-
-        proc = subprocess.Popen(['python', test_file], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=test_path)
-        try:
-            outs, errs = proc.communicate(timeout=5)
-            outputs = outs.decode()
-            errors = errs.decode()
-            outputs_arr = outputs.split('\r\n')
-
-            # get stdout
-            s = False
-            std_output = []
-            temp = []
-            for word in outputs_arr:
-                if word == "STDOUT:":
-                    s = True
-                    continue
-                elif word == "RESULT:":
-                    s = False
-                    std_output.append(temp)
-                    temp = []
-                if s == True:
-                    temp.append(word)
-
-            # get test output
-            t = False
-            temp = []
-            for word in outputs_arr:
-                if word == "RESULT:":
-                    t = True
-                    continue
-                elif word == "STDOUT:":
-                    t = False
-                    if temp:
-                        test_output.append(temp)
-                        temp = []
-                if t == True:
-                    temp.append(word)
-            test_output.append(temp)
-
-        except subprocess.TimeoutExpired:
-            std_output = []
-            proc.kill()
-            outs, errs = proc.communicate()
-            errors = "Output limit exceeded. Check for memory leaks or infinite loops"
+        create_file(user_code)
+        std_output, test_output, errors, = execute_file(test_file)
 
     context = {
         'question': ques,
