@@ -32,11 +32,11 @@
             <div class="text-containers">
                 <h2>Constraints</h2>
                 <hr>
-                <ul>
+
                 {% for c in constraints %}
-                <li>{{c.text| safe}}</li>
+                {{c.text| safe}}
                 {% endfor %}
-                </ul>
+
             </div>
             <div class="text-containers">
                 <h2>Testcases</h2>
@@ -52,14 +52,16 @@
                 <textarea name="my-python-editor" data-editor="python" rows="15">{{ user_code }}</textarea>
                 <div class="output">
                     <div class="output-left">
-                        <h3>RESULTS</h4>
+                        <h3>TEST RESULTS</h4>
                         <div class="output-content">  
                             {% for t in test_output %}
-                            <div class="testcases">
-                                {% for t_output in t %}
-                                <pre>{{t_output}}</pre>
-                                {% endfor %}
-                            </div>
+                                {% if t %}
+                                <div class="testcases">
+                                    {% for t_output in t %}
+                                    <pre>{{t_output}}</pre>
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
                             {% endfor %}
                         </div>
                     </div>
@@ -67,11 +69,13 @@
                         <h3>STDOUT</h4>
                         <div class="output-content">
                             {% for s in std_output %}
-                            <div class="testcases">
-                                {% for s_output in s %}
-                                <pre>{{ s_output }}</pre>
-                                {% endfor %}
-                            </div>
+                                {% if s %}
+                                <div class="testcases">
+                                    {% for s_output in s %}
+                                    <pre>{{ s_output }}</pre>
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
                             {% endfor %}
                             {% if errors != '' %}
                             <div class="testcases">

@@ -40,6 +40,7 @@ dict_cases = {
 
 def test_program(case):
     print("STDOUT:")
+    print(case["ques"])
     output = program.twoNumberSum(case["array"], case["targetSum"])
 
     print('RESULT:')

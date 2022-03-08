@@ -9,7 +9,7 @@ file_path = os.path.join(module_dir, 'scripts\\program.py')
 
 
 def change_date(saved_date, curr_date):
-    num = randint(1,1000)
+    num = randint(1,5)
     saved_date.datetime = curr_date
     saved_date.last_num = num
     saved_date.save()

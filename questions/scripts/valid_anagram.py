@@ -3,36 +3,40 @@ import program
 dict_cases = {
     1: {
         "ques": "Case 1",
-        "nums": [1,2,3,1],
-        "ans": True,
+        "s": "anagram",
+        "t": "nagaram",
+        "ans": True
     },
     2: {
         "ques": "Case 2",
-        "nums": [1,2,3,4],
+        "s": "car",
+        "t": "rat",
         "ans": False
     },
     3: {
         "ques": "Case 3",
-        "nums": [1,1,1,3,3,4,3,2,4,2],
-        "ans": True,
+        "s": "secure",
+        "t": "rescue",
+        "ans": True
     },
     4: {
         "ques": "Case 4",
-        "nums": [3, -11, 91, -1, 6, -25, 23, 3453, 3453, 122, 4, 2, 112, 1, 4],
-        "ans": True,
+        "s": "dessert",
+        "t": "stressed",
+        "ans": False
     },
     5: {
         "ques": "Case 5",
-        "nums": [11, 24, 65, 88, 64, 78, 678, 119, 23, 21, 54, 123, 765],
-        "ans": False,
+        "s": "videogame",
+        "t": "giveademo",
+        "ans": True
     }
 }
-
 
 def test_program(case):
     print("STDOUT:")
     print(case["ques"])
-    output = program.containsDuplicate(case["nums"])
+    output = program.isAnagram(case["s"], case["t"])
 
     print('RESULT:')
     print(case["ques"])
@@ -40,7 +44,7 @@ def test_program(case):
         print("PASS!\n")
     else:
         print("FAIL :(")
-        print("Input: ", case["nums"])
+        print("Input: ", case["s"], ",", case["t"])
         print("Your Answer: ", output)
         print("Correct Answer: ", case["ans"], "\n")
 

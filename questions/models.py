@@ -26,7 +26,7 @@ class Example(models.Model):
 
 class Constraint(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE, null=True)
-    text = models.TextField(null=True, blank=True)
+    text = RichTextField()
 
     def __str__(self):
         return self.question.title
