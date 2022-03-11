@@ -23,27 +23,17 @@
             <div class="text-containers">
                 <h2>Example</h2>
                 <hr>
-                {% for e in examples %}
-                {{e.input | safe}}
-                {{e.output| safe}}
-                {{e.explanation| safe}}
-                {% endfor %}
+                {{example | safe}}
             </div>
             <div class="text-containers">
                 <h2>Constraints</h2>
                 <hr>
-
-                {% for c in constraints %}
-                {{c.text| safe}}
-                {% endfor %}
-
+                {{constraint | safe}}
             </div>
             <div class="text-containers">
                 <h2>Testcases</h2>
                 <hr>
-                {% for t in testcases %}
-                {{t.test | safe}}
-                {% endfor %}
+                {{testcase | safe}}
             </div>
         </div>
         <div class="flex-item-right">
@@ -52,7 +42,7 @@
                 <textarea name="my-python-editor" data-editor="python" rows="15">{{ user_code }}</textarea>
                 <div class="output">
                     <div class="output-left">
-                        <h3>TEST RESULTS</h4>
+                        <h3>TEST RESULTS</h3>
                         <div class="output-content">  
                             {% for t in test_output %}
                                 {% if t %}
@@ -66,7 +56,7 @@
                         </div>
                     </div>
                     <div class="output-right">
-                        <h3>STDOUT</h4>
+                        <h3>STDOUT</h3>
                         <div class="output-content">
                             {% for s in std_output %}
                                 {% if s %}
@@ -95,7 +85,7 @@
             </form> 
         </div>
     </div>
-    <script src="{% static 'src-noconflict/ace.js' %}" type="text/javascript" charset="utf-8"></script>
+    <script src="https://pagecdn.io/lib/ace/1.4.14/ace.js" crossorigin="anonymous" integrity="sha256-dB+UoImtJcNhukfmN+N1Jq+a8cU175tUwyuoTiJR2Qk=" ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{% static 'main.js'%}"></script>
 </body>

@@ -9,33 +9,10 @@ class Question(models.Model):
     description = RichTextField()
     method = models.TextField()
     link = models.TextField()
-
-    def __str__(self):
-        return self.title
-
-
-class Example(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, null=True)
-    input = RichTextField()
-    output = RichTextField()
-    explanation = RichTextField()
-
-    def __str__(self):
-        return self.question.title
-
-
-class Constraint(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, null=True)
-    text = RichTextField()
-
-    def __str__(self):
-        return self.question.title
-
-
-class Testcase(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, null=True)
-    title = models.CharField(max_length=200)
-    test = RichTextField()
+    example = RichTextField()
+    constraint = RichTextField()
+    testcase = RichTextField()
+    test_file = models.CharField(max_length=200)
 
     def __str__(self):
         return self.title

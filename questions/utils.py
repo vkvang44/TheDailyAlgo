@@ -4,8 +4,8 @@ import subprocess
 from random import randint
 
 module_dir = os.path.dirname(__file__)
-test_path = os.path.join(module_dir, 'scripts\\')
-file_path = os.path.join(module_dir, 'scripts\\program.py')
+test_path = os.path.join(module_dir, 'testfiles\\')
+file_path = os.path.join(module_dir, 'testfiles\\program.py')
 
 
 def change_date(saved_date, curr_date):

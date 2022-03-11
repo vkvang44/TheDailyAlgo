@@ -14,10 +14,10 @@ def question(request):
         num = change_date(saved_date, curr_date)
 
     ques = Question.objects.get(number=num)
-    examples = ques.example_set.all()
-    constraints = ques.constraint_set.all()
-    testcases = ques.testcase_set.all()
-    test_file = str(testcases[0])
+    example = ques.example
+    constraint = ques.constraint
+    testcase = ques.testcase
+    test_file = str(ques.test_file)
     user_code = ques.method
     errors = ''
     std_output = [['Click \'Run Code\' to see if your code passes the testcases!']]
@@ -32,9 +32,9 @@ def question(request):
 
     context = {
         'question': ques,
-        'examples': examples,
-        'constraints': constraints,
-        'testcases': testcases,
+        'example': example,
+        'constraint': constraint,
+        'testcase': testcase,
         "user_code": user_code,
         'std_output': std_output,
         'test_output': test_output,
