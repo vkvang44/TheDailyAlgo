@@ -32,6 +32,7 @@ dict_cases = {
 def test_program(case):
     print("STDOUT:")
     print(case["ques"])
+    print(case["nums"])
     output = program.containsDuplicate(case["nums"])
 
     print('RESULT:')

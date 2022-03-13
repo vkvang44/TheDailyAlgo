@@ -35,7 +35,7 @@ body{
   border: 1px solid lightgray;
   border-radius: 5px;
   padding: 10px;
-  flex: 15%;
+  flex: 25%;
   overflow: auto;
   margin: 15px 5px 15px 15px;
   background-color: white;
@@ -43,7 +43,7 @@ body{
 }
 
 .flex-item-right {
-  flex: 85%;
+  flex: 75%;
   margin:15px 15px 15px 5px;
 }
 

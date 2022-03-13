@@ -1,6 +1,6 @@
 import program
 
-dict_cases = {
+testcases = {
     1: {
         "ques": "Case 1",
         "nums": [1,2,3,4],
@@ -29,6 +29,13 @@ dict_cases = {
 }
 
 
+def failed(case, output):
+    print("FAIL :(")
+    print("Input: ", case["nums"])
+    print("Your Answer: ", output)
+    print("Correct Answer: ", case["ans"], "\n")
+
+
 def test_program(case):
     print("STDOUT:")
     print(case["ques"])
@@ -39,21 +46,15 @@ def test_program(case):
     if len(output) == len(case["nums"]):
         for num in output:
             if num not in case["ans"]:
-                print("FAIL :(")
-                print("Input: ", case["nums"])
-                print("Your Answer: ", output)
-                print("Correct Answer: ", case["ans"], "\n")
+                failed(case, output)
                 return
         print("PASS!\n")
     else:
-        print("FAIL :(")
-        print("Input: ", case["nums"])
-        print("Your Answer: ", output)
-        print("Correct Answer: ", case["ans"], "\n")
+        failed(case, output)
 
 
-for case in dict_cases:
-    test_program(dict_cases[case])
+for test in testcases:
+    test_program(testcases[test])
 
 
 

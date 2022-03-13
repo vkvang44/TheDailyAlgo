@@ -1,11 +1,16 @@
-def groupAnagrams(strs):
-    # write your code here
-    group = {}
-    for string in strs:
-        key = ''.join(sorted(string))
-        if key in group:
-            group[key].append(string)
-        else:
-            group[key] = [string]
-    return group.values()
-    
+# class for list node
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+def reverseList(head):
+   # write your code here
+    prev = None
+    while head:
+       temp = head
+       head = head.next
+       temp.next = prev
+       prev = temp
+    return prev
+       

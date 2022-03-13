@@ -38,6 +38,13 @@ dict_cases = {
 }
 
 
+def failed(case, output):
+    print("FAIL :(")
+    print("Input: ", case["nums"], )
+    print("Your Answer: ", output)
+    print("Correct Answer: ", case["ans"], "\n")
+
+
 def test_program(case):
     print("STDOUT:")
     print(case["ques"])
@@ -50,15 +57,9 @@ def test_program(case):
         if output == case["ans"]:
             print("PASS!\n")
         else:
-            print("FAIL :(")
-            print("Input: ", case["nums"],)
-            print("Your Answer: ", output)
-            print("Correct Answer: ", case["ans"], "\n")
+            failed(case, output)
     else:
-            print("FAIL :(")
-            print("Input: ", case["nums"], )
-            print("Your Answer: ", output)
-            print("Correct Answer: ", case["ans"], "\n")
+        failed(case, output)
 
 
 for case in dict_cases:
