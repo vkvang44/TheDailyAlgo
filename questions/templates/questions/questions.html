@@ -37,16 +37,16 @@
             </div>
         </div>
         <div class="flex-item-right">
-            <form action="" method="post">
+            <form id="editor-form" action="/create_post/" method="post">
                 {% csrf_token %}
-                <textarea name="my-python-editor" data-editor="python" rows="15">{{ user_code }}</textarea>
+                <textarea id="my-python-editor" data-editor="python" rows="15">{{ user_code }}</textarea>
                 <div class="output">
                     <div class="output-left">
                         <h3>TEST RESULTS</h3>
-                        <div class="output-content">  
+                        <div id ="test-output" class="output-content">  
                             {% for t in test_output %}
                                 {% if t %}
-                                <div class="testcases">
+                                <div id="test-output-cases" class="testcases">
                                     {% for t_output in t %}
                                     <pre>{{t_output}}</pre>
                                     {% endfor %}
@@ -57,7 +57,7 @@
                     </div>
                     <div class="output-right">
                         <h3>STDOUT</h3>
-                        <div class="output-content">
+                        <div id ="std-output" class="output-content">
                             {% for s in std_output %}
                                 {% if s %}
                                 <div class="testcases">

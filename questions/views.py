@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Question, Date
 from datetime import date
 from .utils import create_file, execute_file, change_date
+from django.http import JsonResponse
 
 
 # Create your views here.
@@ -24,11 +25,16 @@ def question(request):
     test_output = []
 
     if request.method == 'POST':
-        req_post = request.POST
-        user_code = req_post['my-python-editor']
+        # req_post = request.POST
+        # user_code = req_post['my-python-editor']
+        user_code = request.POST.get('user_code')
+        print('user_code', user_code)
 
         create_file(user_code)
         std_output, test_output, errors, = execute_file(test_file)
+
+        response = {'std_output':std_output, 'test_output': test_output, 'errors':errors}
+        return JsonResponse(response, status=200)
 
     context = {
         'question': ques,
