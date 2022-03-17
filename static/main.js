@@ -28,6 +28,7 @@ $(function () {
         })
 
     });
+
     $("#submit-btn").click(function(){
         $(this).addClass("loading");
         $(this).val('');
