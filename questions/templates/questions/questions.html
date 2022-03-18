@@ -76,10 +76,10 @@
                     </div>
                 </div>
                 <div class="btn btn-hover ">
-                    <input type="submit" id="submit-btn" class="btn-detail " value="Run Code">
+                    <input type="submit" id="submit-btn" class="btn-detail" value="Run Code">
                 </div>
-                <div class="reset-btn btn-hover" >
-                    <a href="{%url 'question'%}" style="color: black; text-decoration: none; text-align: center; ">Reset Code</a>
+                <div id="reset" class="reset-btn btn-hover" >
+                    <div style="color: black; text-decoration: none; text-align: center; ">Reset Code</div>
                     <!--<input type="submit" id="reset-btn" class="btn-detail " value="Reset Code">-->
                 </div>
             </form> 
@@ -87,6 +87,7 @@
     </div>
     <script src="https://pagecdn.io/lib/ace/1.4.14/ace.js" crossorigin="anonymous" integrity="sha256-dB+UoImtJcNhukfmN+N1Jq+a8cU175tUwyuoTiJR2Qk=" ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{% static 'main.js'%}"></script>
 </body>
 </html>
