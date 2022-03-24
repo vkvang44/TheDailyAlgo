@@ -154,8 +154,8 @@ $(function () {
                 text: "All code that was written will be gone.",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
                 confirmButtonText: 'Yes',
                 reverseButtons: true
               }).then((result) => {

@@ -36,17 +36,14 @@ def question(request):
             create_file(user_code)
             std_output, test_output, errors, = execute_file(test_file)
 
-            response = {'std_output':std_output, 'test_output': test_output, 'errors':errors}
-            return JsonResponse(response, status=200)
-
         if reset == "true":
             errors = ''
             std_output = [['Click \'Run Code\' to see if your code passes the testcases!']]
             test_output = []
             user_code = ques.method
 
-            response = {'std_output': std_output, 'test_output': test_output, 'errors': errors, 'user_code': user_code}
-            return JsonResponse(response, status=200)
+        response = {'std_output': std_output, 'test_output': test_output, 'errors': errors, 'user_code': user_code}
+        return JsonResponse(response, status=200)
 
     context = {
         'question': ques,
