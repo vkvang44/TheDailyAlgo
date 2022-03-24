@@ -3,3 +3,14 @@ A website that's designed to keep your algorithm problem solving skills at peak 
 
 # Examples
 ![Profile](./gifs/pass.gif)
+
+# Click on the Links below to see higher quality gif examples
+
+### Passing all test cases
+[https://raw.githubusercontent.com/vkvang44/TheDailyAlgo/main/gifs/pass_high_quality.gif](https://raw.githubusercontent.com/vkvang44/TheDailyAlgo/main/gifs/pass_high_quality.gif)
+
+### Failing all test cases
+[https://raw.githubusercontent.com/vkvang44/TheDailyAlgo/main/gifs/pass_high_quality.gif](https://raw.githubusercontent.com/vkvang44/TheDailyAlgo/main/gifs/pass_high_quality.gif)
+
+### Printing statements
+[https://raw.githubusercontent.com/vkvang44/TheDailyAlgo/main/gifs/fail.gif](https://raw.githubusercontent.com/vkvang44/TheDailyAlgo/main/gifs/fail.gif)
